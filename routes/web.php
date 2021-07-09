@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PendetaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +21,15 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('artikel', [LandingController::class, 'artikel'])->name('landing.artikel');
-Route::get('pendeta', [LandingController::class, 'pendeta'])->name('landing.pendeta');
-Route::get('login', [LandingController::class, 'login'])->name('landing.login');
-Route::resource('/', LandingController::class);
+Route::get('/artikel', [ArtikelController::class, 'index'])->name('landing.artikel');
+Route::get('/pendeta', [PendetaController::class, 'index'])->name('landing.pendeta');
+
+Route::post('/login', [loginController::class, 'login']);
+Route::get('/login', function () {
+    return view('pages.landing-page.login');
+});
+
+Route::prefix('/admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
+});
+Route::get('/', [LandingController::class, 'index'])->name('index');

@@ -15,21 +15,6 @@ class LandingController extends Controller
     {
         return view('pages.landing-page.index');
     }
-
-    public function artikel()
-    {
-        return view('pages.landing-page.artikel');
-    }
-
-    public function pendeta()
-    {
-        return view('pages.landing-page.pdt');
-    }
-    public function login()
-    {
-        return view('pages.landing-page.login');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
