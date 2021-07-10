@@ -31,5 +31,12 @@ Route::get('/login', function () {
 
 Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
+    Route::get('/user', [AdminController::class, 'user']);
+    Route::get('/addUser', [AdminController::class, 'addUser']);
+    Route::post('/addUser', [AdminController::class, 'add']);
+    Route::get('/user/edit/{id}', [AdminController::class, 'edit']);
+    Route::post('/user/update', [AdminController::class, 'update']);
+    Route::get('/user/reset/{id}', [AdminController::class, 'reset']);
+    Route::post('/user/resetPassword', [AdminController::class, 'resetPassword']);
 });
 Route::get('/', [LandingController::class, 'index'])->name('index');
