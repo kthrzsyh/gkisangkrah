@@ -19,9 +19,15 @@
                     <a class="block cursor-pointer nav-1-2" href="/artikel">Artikel</a>
                     <a class="block cursor-pointer nav-1-2" href="/pendeta">Pendeta</a>
                     <a class="block cursor-pointer nav-1-2" href="#">Gallery</a>
+                    @if(auth()->check())
+                    <a href="/logout" style="text-align: center;" class="block btn-fill-1-2 items-center border-0 py-3 px-8 focus:outline-none rounded-2xl font-medium text-base mt-6 lg:mt-0">
+                        Logout
+                    </a>
+                    @else
                     <a href="/login" style="text-align: center;" class="block btn-fill-1-2 items-center border-0 py-3 px-8 focus:outline-none rounded-2xl font-medium text-base mt-6 lg:mt-0">
                         Login
                     </a>
+                    @endif
                 </nav>
             </div>
         </div>

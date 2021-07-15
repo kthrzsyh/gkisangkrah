@@ -24,11 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/artikel', [ArtikelController::class, 'index'])->name('landing.artikel');
 Route::get('/pendeta', [PendetaController::class, 'index'])->name('landing.pendeta');
 
-Route::post('/login', [loginController::class, 'login']);
-Route::get('/login', function () {
-    return view('pages.landing-page.login');
-});
-
 Route::prefix('/admin')->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/user', [AdminController::class, 'user']);
@@ -38,5 +33,18 @@ Route::prefix('/admin')->group(function () {
     Route::post('/user/update', [AdminController::class, 'update']);
     Route::get('/user/reset/{id}', [AdminController::class, 'reset']);
     Route::post('/user/resetPassword', [AdminController::class, 'resetPassword']);
+    Route::get('/pdt', [AdminController::class, 'pdt']);
+    Route::get('/addPdt', [AdminController::class, 'addPdt']);
+    Route::post('/addPdt', [AdminController::class, 'add_pdt']);
+    Route::get('/pdt/edit/{id}', [AdminController::class, 'edit_pdt']);
+    Route::post('/pdt/update', [AdminController::class, 'update_pdt']);
 });
+
+Route::post('/login', [loginController::class, 'login']);
+Route::get('/login', function () {
+    return view('pages.landing-page.login');
+});
+
+Route::get('/logout', [loginController::class, 'logout']);
+
 Route::get('/', [LandingController::class, 'index'])->name('index');

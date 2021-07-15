@@ -12,7 +12,7 @@
                 <!-- Left Column -->
                 <div class="lg:flex-grow lg:w-1/2 flex flex-col lg:items-start lg:text-left mb-3 md:mb-12 lg:mb-0 items-center text-center">
                     <h1 class="lg:block hidden title-font sm:text-5xl lg:text-6xl text-4xl mb-8 font-semibold sm:leading-tight" style="color: Black; line-height: 1.2">
-                        Selamat Datang Admin
+                        Selamat Datang {{ Auth()->guard()->user()->username }}
                     </h1>
                 </div>
             </div>
