@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pdt;
 use App\Models\User;
+use App\Models\warta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -120,5 +121,22 @@ class AdminController extends Controller
 
         $table = pdt::all();
         return view('pages.admin.pdt.index')->with(['pdt' => $table]);
+    }
+
+    public function delete_pdt($id)
+    {
+        $delete_pdt     = pdt::destroy($id);
+        return  $delete_pdt;
+    }
+
+    public function warta()
+    {
+        $table = warta::all();
+        return view('pages.admin.warta.index')->with(['warta' => $table]);
+    }
+
+    public function addWarta()
+    {
+        return view('pages.admin.warta.add');
     }
 }

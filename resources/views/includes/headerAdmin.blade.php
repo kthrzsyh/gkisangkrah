@@ -19,7 +19,7 @@
                     @if(auth()->user()->role == 'superadmin')
                     <a class="block cursor-pointer nav-1-2" href="/admin/user">Users</a>
                     @endif
-                    <a class="block cursor-pointer nav-1-2" href="/admin/artikel">Artikel</a>
+                    <a class="block cursor-pointer nav-1-2" href="/admin/warta">Warta</a>
                     <a class="block cursor-pointer nav-1-2" href="/admin/pdt">Pendeta</a>
                     <a class="block cursor-pointer nav-1-2" href="/admin/gallery">Gallery</a>
                     @if(auth()->check())

@@ -55,7 +55,8 @@
                                 <a style="align-self: center; margin-right:1rem" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="/admin/pdt/edit/{{$dataPdt->id}}" data-id='{{$dataPdt->id}}'>
                                     Edit
                                 </a>
-                                <a style="align-self: center;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" href="#" data-id="{{$dataPdt->id}}">Hapus</a>
+                                <a id="hapus_pdt" style="align-self: center;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hapus" href="#!" data-id="{{$dataPdt->id}}">Hapus</a>
+
                             </td>
                         </tr>
                         @endforeach
@@ -68,14 +69,11 @@
     </div>
 </div>
 
+
 @endsection
 
-@push(' after-style')
-<script>
-    $(document).ready(function() {
-        $('#table-pdt').DataTable();
-    });
-</script>
+@push('after-style')
+
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
@@ -121,4 +119,38 @@
         background-color: #141432;
     }
 </style>
+@endpush
+@push('after-script')
+<script>
+    $(document).ready(function() {
+        $('#table-pdt').DataTable();
+    });
+    $(document).on('click', 'a#hapus_pdt', function() {
+        // console.log($(this).data('id'));
+        let data = {
+            '_token': '{{csrf_token()}}',
+        }
+        swal({
+                title: "Yakin Hapus Data?",
+                text: "Data tidak akan kembali",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.post('/admin/pdt/delete/' + $(this).data('id'), data,
+                        function(respon) {
+                            window.location.reload()
+                        })
+                    swal("Data Telah di Hapus!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("Data tidak jadi di hapus");
+                }
+            });
+
+    });
+</script>
 @endpush
