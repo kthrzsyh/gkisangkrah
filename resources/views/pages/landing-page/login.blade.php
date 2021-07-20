@@ -3,6 +3,13 @@
 @section('title', 'Login')
 
 @section('content')
+
+@if(Session::get('Failed'))
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    swal("Username tidak ada / Password Salah!");
+</script>
+@endif
 <div class="content-3-5 d-flex flex-column align-items-center flex-lg-row flex-col" style="font-family: 'Poppins', sans-serif">
     <div class="d-flex mx-auto align-items-center justify-content-left width-right mx-lg-0" style="padding-top: 1rem;">
         <div class="mx-auto">

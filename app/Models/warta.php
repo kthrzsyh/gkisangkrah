@@ -11,8 +11,8 @@ class warta extends Model
 
     protected $table = 'tb_warta';
 
-    public function warta()
+    public function author()
     {
-        return $this->hasOne(warta::class, 'author');
+        return $this->belongsTo(User::class, 'author');
     }
 }

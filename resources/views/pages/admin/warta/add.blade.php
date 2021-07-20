@@ -46,10 +46,10 @@
 <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
     <div style="margin-bottom: 5rem;" class="px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
         <h1 class="text-2xl font-bold mb-8" style="text-align: center;">Form Tambah Data Warta</h1>
-        <form method="post" id="form" novalidate>
+        <form method="post" id="form" enctype="multipart/form-data" novalidate action="/admin/storeWarta">
             @csrf
             <div class="relative z-0 w-full mb-5">
-                <input type="text" name="nama" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
+                <input type="text" name="judul" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
                 <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan Judul</label>
             </div>
             <div class="relative z-0 w-full mb-5">
@@ -62,7 +62,7 @@
             </div>
             <div class="relative z-0 w-full mb-5">
                 <input type="file" name="file" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan Alamat</label>
+                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan File Warta</label>
             </div>
 
             <button id="button" type="submit" class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-green-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none">

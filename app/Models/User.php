@@ -12,6 +12,10 @@ class User extends Authenticatable
     protected $table = 'tb_users';
     use HasFactory, Notifiable;
 
+    public function warta()
+    {
+        return $this->hasMany(warta::class, 'author');
+    }
     /**
      * The attributes that are mass assignable.
      *

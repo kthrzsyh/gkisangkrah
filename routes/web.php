@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendetaController;
@@ -24,9 +24,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/warta', [WartaController::class, 'index'])->name('landing.warta');
-Route::get('/pendeta', [PendetaController::class, 'index'])->name('landing.pendeta');
 
+Route::get('/pendeta', [PendetaController::class, 'index'])->name('landing.pendeta');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('landing.gallery');
+Route::get('/post', [WartaController::class, 'index']);
 
 Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
@@ -45,6 +46,8 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::post('/pdt/delete/{id}', [AdminController::class, 'delete_pdt']);
     Route::get('/warta', [AdminController::class, 'warta']);
     Route::get('/addWarta', [AdminController::class, 'addWarta']);
+    Route::post('/storeWarta', [AdminController::class, 'add_warta']);
+    Route::get('/hapusWarta/{id}', [AdminController::class, 'hapus_warta']);
 });
 
 

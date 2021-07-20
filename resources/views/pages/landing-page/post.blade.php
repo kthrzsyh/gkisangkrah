@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 <!-- Set Title -->
-@section('title', 'Artikel')
+@section('title', 'Warta')
 
 @section('content')
 <!-- breadcumbs -->

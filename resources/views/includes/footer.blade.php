@@ -1,19 +1,10 @@
 <section class="h-full pt-20 pb-12 lg:px-24 md:px-16 sm:px-8 px-4" style="background-color: #141432">
     <footer class="h-full" style="font-family: 'Poppins', sans-serif">
-        <div class="pb-24 mx-auto">
-            <div class="grid lg:grid-cols-4 md:grid-cols-2">
-                <div class="">
-                    <div class="mb-5">
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="border-color-footer-2-3 mx-auto">
             <div class="">
                 <hr style="border-color: #2e2e5a" />
             </div>
-
             <div class="container mx-auto flex pt-12 flex-col lg:flex-row items-center space-y-5 lg:space-y-0">
                 <div class="flex title-font font-medium items-center text-gray-900 mb-4 lg:mb-0 md:mb-0 space-x-5" style="cursor: pointer">
 

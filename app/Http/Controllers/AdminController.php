@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\pdt;
 use App\Models\User;
 use App\Models\warta;
+use Ramsey\Uuid\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AdminController extends Controller
 {
@@ -138,5 +142,72 @@ class AdminController extends Controller
     public function addWarta()
     {
         return view('pages.admin.warta.add');
+    }
+
+    public function add_warta(Request $r)
+    {
+        $warta      = new warta;
+
+        $warta->judul   = $r->request->get('judul');
+
+        $warta->isi     = $r->request->get('isi');
+        $warta->author  = auth()->id();
+
+        $judul          = strtolower($r->request->get('judul')) . "-" . date('Ymd');
+
+        $warta->slug    = str_replace(" ", "-", $judul);
+
+        $gambar         = $r->file('gambar');
+        $file           = $r->file('file');
+
+        $gambar_         = $this->generate_picture($gambar);
+        $file_           = $this->generate_picture($file);
+
+        $image_resize    = Image::make($gambar->getRealPath());
+        $image_resize->resize(300, 300);
+        $image_resize->save(public_path('warta/img/' . $gambar_));
+
+        $warta->gambar  = $gambar_;
+        $warta->file    = $file_;
+
+        // $this->uploadImage($gambar, $gambar_, 'gambar');
+        $this->uploadImage($file, $file_, 'file');
+
+        $warta->save();
+        $table = warta::all();
+        return view('pages.admin.warta.index')->with(['warta' => $table]);
+    }
+
+    public function generate_picture($gambar)
+    {
+        $extension      = $gambar->getClientOriginalExtension();
+        $name           = Uuid::uuid1()->toString();
+        $value          = $name . '.' . $extension;
+        return $value;
+    }
+    public function uploadImage($field, $targetName = '', $disk = 'upload')
+    {
+        return Storage::disk($disk)->put($targetName, File::get($field));
+    }
+
+    public function hapus_warta($id)
+    {
+
+        $warta                 = warta::find($id);
+        $file_path_gambar      = public_path() . '/warta/img/' . $warta->gambar;
+        $file_path_pdf         = public_path() . '/warta/pdf/' . $warta->file;
+        // dd($file_path_gambar);
+        if (file_exists($file_path_gambar)) {
+
+            unlink($file_path_gambar);
+        }
+        if (file_exists($file_path_pdf)) {
+
+            unlink($file_path_pdf);
+        }
+
+        warta::destroy($id);
+
+        return redirect()->back();
     }
 }

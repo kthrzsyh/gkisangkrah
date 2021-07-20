@@ -14,6 +14,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/admin');
         }
+        return redirect()->back()->with(['Failed' => 'Username tidak ada / Password Salah!']);
     }
     public function logout()
     {
