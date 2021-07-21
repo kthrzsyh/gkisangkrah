@@ -4,124 +4,48 @@
 @section('title', 'Warta')
 
 @section('content')
-<!-- breadcumbs -->
-<header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">
-            Warta
-        </h1>
-    </div>
-</header>
-
-<!-- table -->
-<div class="pb-16 pt-16 lg:pb-20 lg:px-24 md:px-16 sm:px-8 px-8  lg:flex-row flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stadium</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thropy</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Next Match</th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Detail</span>
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="bg-white divide-y divide-gray-200">
-
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://resources.premierleague.com/premierleague/badges/t8.svg" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            Chelsea FC
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            chelseafc.com
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                Stamford Bridge
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                10
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://resources.premierleague.com/premierleague/badges/t1.svg" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            Manchester United
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            www.manutd.com
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Detail</a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://resources.premierleague.com/premierleague/badges/t14.svg" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            Liverpool
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            liverpool.com
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                Anfield
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                10
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="https://resources.premierleague.com/premierleague/badges/t43.svg" alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
-                                            Manchester City
-                                        </div>
-                                        <div class="text-sm text-gray-500">
-                                            www.mancity.com
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Detail</a>
-                            </td>
-                        </tr>
-
-                        <!-- More items... -->
-                    </tbody>
-                </table>
-            </div>
+<div style="padding-top:2rem; padding-bottom: 5rem;" class="mx-auto p-16 sm:p-24 lg:p-48 bg-gray-200">
+    <!-- Carousel Body -->
+    @foreach($warta as $dataWarta)
+    <div class="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl" style="min-height: 19rem;">
+        <div class="relative w-full md:w-2/5 h-full overflow-hidden rounded-t-lg md:rounded-t-none md:rounded-l-lg" style="min-height: 19rem;">
+            <img class="absolute inset-0 w-full h-full object-cover object-center" src="/warta/img/{{$dataWarta->gambar}}" alt="">
         </div>
+
+        <div class="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
+            <div class="p-12 md:pr-24 md:pl-16 md:py-12">
+                <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">{{$dataWarta->judul}}</p>
+                <p class="text-grey-900">{{$dataWarta->isi}}</p>
+                <a class="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900" href="">
+                    <span>Lihat Detail</span>
+                    <span class="text-xs ml-1">&#x279c;</span>
+                </a>
+                <hr>
+                <p class="text-grey-300">{{$dataWarta->author}}</p>
+            </div>
+
+            <svg class="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-gray-100 -ml-12" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon points="50,0 100,0 50,100 0,100" />
+            </svg>
+        </div>
+
+        <button class="absolute top-0 mt-32 left-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-indigo-600 hover:text-indigo-400 focus:text-indigo-400 -ml-6 focus:outline-none focus:shadow-outline">
+            <span class="block" style="transform: scale(-1);">&#x279c;</span>
+        </button>
+        <button class="absolute top-0 mt-32 right-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-indigo-600 hover:text-indigo-400 focus:text-indigo-400 -mr-6 focus:outline-none focus:shadow-outline">
+            <span class="block" style="transform: scale(1);">&#x279c;</span>
+        </button>
     </div>
+    @endforeach
+
+    <!-- Carousel Tabs -->
+    <div class="flex items-center pt-5 justify-between">
+        <button class="px-2 opacity-50 hover:opacity-100 focus:opacity-100"><img class="w-full" src="https://stripe.com/img/v3/payments/overview/logos/kickstarter.svg" alt="" style="max-height: 60px;"></button>
+        <button class="px-2 opacity-50 hover:opacity-100 focus:opacity-100"><img class="w-full" src="https://stripe.com/img/v3/payments/overview/logos/slack.svg" alt="" style="max-height: 60px;"></button>
+        <button class="px-2 opacity-50 hover:opacity-100 focus:opacity-100"><img class="w-full" src="https://stripe.com/img/v3/payments/overview/logos/glossier.svg" alt="" style="max-height: 60px;"></button>
+        <button class="px-2 opacity-50 hover:opacity-100 focus:opacity-100"><img class="w-full" src="https://stripe.com/img/v3/payments/overview/logos/charity_water.svg" alt="" style="max-height: 60px;"></button>
+        <button class="px-2 opacity-100 hover:opacity-100 focus:opacity-100"><img class="w-full" src="https://stripe.com/img/v3/payments/overview/logos/missguided.svg" alt="" style="max-height: 60px;"></button>
+    </div>
+
 </div>
 @endsection

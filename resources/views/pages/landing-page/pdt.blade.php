@@ -4,62 +4,42 @@
 @section('title', 'Pendeta')
 
 @section('content')
-<!-- breadcumbs -->
-<header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-gray-900">
-            List Pendeta
-        </h1>
-    </div>
-</header>
+<div>
+    <section class="text-black-200">
+        <div class="max-w-6xl mx-auto px-5" style="padding-top: 2rem; padding-bottom:2rem">
+            <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+                <h1 class=" title-font mb-2 text-4xl font-extrabold leading-10 tracking-tight text-left sm:text-5xl sm:leading-none md:text-6xl">Daftar Pendeta</h1>
+            </div>
+            <div class="flex flex-wrap m-4" style="margin:auto; padding-left: 4rem;">
+                @foreach($pdt as $dataPdt)
+                <div class="p-4" style="width: 20rem; height: 20rem;">
+                    <div class="border border-gray-300 p-6 rounded-lg" style="border-color: black;">
+                        <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                            <img src="{{ asset('/assets/img/person.png') }}" alt="">
+                        </div>
+                        <h2 class="text-lg  font-medium title-font mb-2">{{$dataPdt->nama}}</h2>
+                        <p class="leading-relaxed text-base">{{$dataPdt->tempat}} , {{ $dataPdt->tgl_lahir }}</p>
+                        <p class="leading-relaxed text-base">{{$dataPdt->alamat}}</p>
+                        <p class="leading-relaxed text-base">{{$dataPdt->email}}</p>
 
-<!-- table -->
-<div class="pb-16 pt-16 lg:pb-20 lg:px-24 md:px-16 sm:px-8 px-8  lg:flex-row flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200" id="table-pdt">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tempat / Tgl Lahir</th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Alamat</th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">No. HP</th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="bg-white divide-y divide-gray-200" style="text-align: center;">
-                        @foreach($pdt as $dataPdt)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{$loop->index+1}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{$dataPdt->nama}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{$dataPdt->tempat}} , {{ $dataPdt->tgl_lahir }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-wrap">
-                                {{$dataPdt->alamat}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{$dataPdt->email}}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="https://wa.me/{{$dataPdt->no_hp}}" target="_blank">{{$dataPdt->no_hp}}</a>
-                            </td>
-                        </tr>
-                        @endforeach
-
-                        <!-- More items... -->
-                    </tbody>
-                </table>
+                        <div class="text-center mt-2 leading-none flex justify-between w-full">
+                            <span class=" mr-3 inline-flex items-center leading-none text-sm  py-1 ">
+                            </span>
+                            <span class=" inline-flex items-center leading-none text-sm">
+                                <div class="w-8 h-8 inline-flex items-center justify-center rounded-full bg-indigo-100 mb-4">
+                                    <a href="https://wa.me/{{$dataPdt->no_hp}}" target="_blank">
+                                        <img src="{{ asset('/assets/img/whatsapp.png') }}">
+                                    </a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
-    </div>
+    </section>
+
 </div>
 @endsection
 
@@ -110,12 +90,4 @@
         background-color: #141432;
     }
 </style>
-@endpush
-
-@push('after-script')
-<script>
-    $(document).ready(function() {
-        $('#table-pdt').DataTable();
-    });
-</script>
 @endpush

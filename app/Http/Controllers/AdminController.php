@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use App\Models\pdt;
 use App\Models\User;
 use App\Models\warta;
@@ -146,9 +147,9 @@ class AdminController extends Controller
 
     public function add_warta(Request $r)
     {
-        $warta      = new warta;
+        $warta          = new warta;
 
-        $warta->judul   = $r->request->get('judul');
+        $warta->judul   = ucwords($r->request->get('judul'));
 
         $warta->isi     = $r->request->get('isi');
         $warta->author  = auth()->id();
@@ -185,6 +186,7 @@ class AdminController extends Controller
         $value          = $name . '.' . $extension;
         return $value;
     }
+
     public function uploadImage($field, $targetName = '', $disk = 'upload')
     {
         return Storage::disk($disk)->put($targetName, File::get($field));
@@ -209,5 +211,34 @@ class AdminController extends Controller
         warta::destroy($id);
 
         return redirect()->back();
+    }
+
+    public function gallery()
+    {
+        $table = Gallery::all();
+        return view('pages.admin.gallery.index')->with(['gallery' => $table]);
+    }
+
+    public function addGallery()
+    {
+        return view('pages.admin.gallery.add');
+    }
+
+    public function add_gallery(Request $r)
+    {
+        $gallery                = new Gallery;
+        $gallery->deskripsi     = strtolower($r->request->get('deskripsi'));
+        $gambar                 = $r->file('gambar');
+        $gambar_                = $this->generate_picture($gambar);
+
+        $image_resize           = Image::make($gambar->getRealPath());
+        $image_resize->resize(300, 300);
+        $image_resize->save(public_path('gallery/' . $gambar_));
+
+        $gallery->gambar        = $gambar_;
+
+        $gallery->save();
+        $table = Gallery::all();
+        return view('pages.admin.gallery.index')->with(['gallery' => $table]);
     }
 }

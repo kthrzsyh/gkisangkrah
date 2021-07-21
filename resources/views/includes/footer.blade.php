@@ -66,9 +66,9 @@
                 <nav class="mx-auto flex flex-wrap items-center text-base justify-center">
                     <a class="mr-5 footer-link-footer-2-3" href="/">Home</a>
                     <span class="mr-5">|</span>
-                    <a class="mr-5 footer-link-footer-2-3" href="#">Gallery</a>
+                    <a class="mr-5 footer-link-footer-2-3" href="/gallery">Gallery</a>
                     <span class="mr-5">|</span>
-                    <a class="mr-5 footer-link-footer-2-3" href="#">Contact Us</a>
+                    <a class="mr-5 footer-link-footer-2-3" href="/contact">Contact Us</a>
                 </nav>
 
                 <nav class="flex lg:flex-row flex-col items-center text-base justify-center">

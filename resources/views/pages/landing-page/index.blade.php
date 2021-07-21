@@ -12,26 +12,26 @@
                 <!-- Left Column -->
                 <div class="lg:flex-grow lg:w-1/2 flex flex-col lg:items-start lg:text-left mb-3 md:mb-12 lg:mb-0 items-center text-center">
 
-                    <p class="mb-8 leading-relaxed font-semibold text-sm" style="color: #fb6262">
+                    <p class="mb-8 leading-relaxed font-semibold text-sm" style="color: #F9F871">
                         GKI Sangkrah Surakarta
                     </p>
 
-                    <h1 class="lg:block hidden title-font sm:text-5xl lg:text-6xl text-4xl mb-8 font-semibold sm:leading-tight" style="color: #cbcbd2; line-height: 1.2">
+                    <h1 class="lg:block hidden title-font sm:text-5xl lg:text-6xl text-4xl mb-8 font-semibold sm:leading-tight" style="color: white; line-height: 1.2">
                         Selamat Datang<br>
                         di GKI Sangkrah
                     </h1>
 
-                    <h1 class="lg:hidden block title-font sm:text-5xl lg:text-6xl text-4xl mb-8 lg::px-10 md:px-10 sm:px-6 px-0 font-semibold sm:leading-tight" style="color: #cbcbd2; line-height: 1.2">
+                    <h1 class="lg:hidden block title-font sm:text-5xl lg:text-6xl text-4xl mb-8 lg::px-10 md:px-10 sm:px-6 px-0 font-semibold sm:leading-tight" style="color: #F9F871; line-height: 1.2">
                         Selamat Datang di GKI Sangkrah
                     </h1>
 
                     <div class="inline-block items-center mx-auto lg:mx-0 lg:flex justify-center lg:space-x-8 md:space-x-2 sm:space-x-3 space-x-0">
 
-                        <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #524eee; font-family: 'Poppins', sans-serif;">
+                        <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #DC745F; font-family: 'Poppins', sans-serif;">
                             Warta
                         </button>
 
-                        <button class="btn-outline-header-2-3 font-normal text-black text-base py-4 px-6 rounded-xl focus:outline-none bg-transparent rounded hover:border-transparent" style="font-family: 'Poppins', sans-serif">
+                        <button class="btn-outline-header-2-3 font-normal text-black text-base py-4 px-6 rounded-xl focus:outline-none rounded hover:border" style="font-family: 'Poppins', sans-serif">
                             <div class="flex items-center">
                                 <img style="height: 20px;" class="mr-2" src="{{ asset('/assets/img/icon-1.png') }}" alt="" />
                                 Gallery
@@ -43,7 +43,7 @@
 
                 <!-- Right Column -->
                 <div class="w-full lg:w-1/2 text-center justify-center flex pr-0">
-                    <img id="hero-header-2-3" src="{{ asset('/assets/img/picture16.png') }}" alt="" />
+                    <img id="hero-header-2-3" style="height: 75%;" src="{{ asset('/assets/img/hero-1.png') }}" alt="" />
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
@@ -26,8 +27,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/pendeta', [PendetaController::class, 'index'])->name('landing.pendeta');
-Route::get('/gallery', [GalleryController::class, 'index'])->name('landing.gallery');
+Route::get('/album', [GalleryController::class, 'index'])->name('landing.gallery');
 Route::get('/post', [WartaController::class, 'index']);
+Route::get('/contact', [ContactController::class, 'index']);
 
 Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
@@ -48,6 +50,9 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/addWarta', [AdminController::class, 'addWarta']);
     Route::post('/storeWarta', [AdminController::class, 'add_warta']);
     Route::get('/hapusWarta/{id}', [AdminController::class, 'hapus_warta']);
+    Route::get('/gallery', [AdminController::class, 'gallery']);
+    Route::get('/addGallery', [AdminController::class, 'addGallery']);
+    Route::post('/storeGallery', [AdminController::class, 'add_gallery']);
 });
 
 

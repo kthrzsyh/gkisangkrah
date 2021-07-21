@@ -1,4 +1,4 @@
-<section class="h-full w-full border-box transition-all duration-500 linear lg:px-24 md:px-20 px-8 py-8 border-b" style="background-color: #141432">
+<section class="h-full w-full border-box transition-all duration-500 linear lg:px-24 md:px-20 px-8 py-8" style="background-color: #141432">
 
     <div style="font-family: 'Poppins', sans-serif">
         <div class="mx-auto flex flex-wrap flex-row items-center justify-between">
@@ -7,7 +7,7 @@
             </a>
 
             <label for="menu-toggle-1-2" class="cursor-pointer lg:hidden block">
-                <svg class="w-6 h-6" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6" fill="none" stroke="#F9F871" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </label>
@@ -18,7 +18,8 @@
                 <nav class="lg:space-x-12 space-x-0 lg:flex items-center justify-between text-base pt-8 lg:pt-0 lg:space-y-0 space-y-6">
                     <a class="block cursor-pointer nav-1-2" href="/post">Warta</a>
                     <a class="block cursor-pointer nav-1-2" href="/pendeta">Pendeta</a>
-                    <a class="block cursor-pointer nav-1-2" href="/gallery">Gallery</a>
+                    <a class="block cursor-pointer nav-1-2" href="/album">Gallery</a>
+                    <a class="block cursor-pointer nav-1-2" href="/contact">Contact</a>
                 </nav>
             </div>
         </div>
