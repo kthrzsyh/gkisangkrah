@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 <!-- Set Title -->
-@section('title', 'Warta')
+@section('title', 'Gallery')
 
 @section('content')
 <div class="mt-16 max-w-6xl mx-auto px-5" style="padding-bottom: 3rem;">
@@ -11,7 +11,7 @@
         @foreach($gallery as $dataGallery)
         <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
             <div class="flex items-end justify-end h-56 w-full bg-cover">
-                <img src="gallery/{{$dataGallery->gambar}}" alt="">
+                <img src="gallery/{{$dataGallery->gambar}}" alt="" style="object-fit: cover; height: 100%;width:100%">
             </div>
             <div class="px-5 py-3">
                 <h3 class="text-gray-700 uppercase">{{ $dataGallery->deskripsi }}</h3>

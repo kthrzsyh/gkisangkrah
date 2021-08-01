@@ -50,6 +50,8 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/addWarta', [AdminController::class, 'addWarta']);
     Route::post('/storeWarta', [AdminController::class, 'add_warta']);
     Route::get('/hapusWarta/{id}', [AdminController::class, 'hapus_warta']);
+    Route::get('/warta/edit/{id}', [AdminController::class, 'edit_warta']);
+    Route::post('/editWarta', [AdminController::class, 'update_warta']);
     Route::get('/gallery', [AdminController::class, 'gallery']);
     Route::get('/addGallery', [AdminController::class, 'addGallery']);
     Route::post('/storeGallery', [AdminController::class, 'add_gallery']);

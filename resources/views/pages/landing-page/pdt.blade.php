@@ -19,7 +19,6 @@
                         </div>
                         <h2 class="text-lg  font-medium title-font mb-2">{{$dataPdt->nama}}</h2>
                         <p class="leading-relaxed text-base">{{$dataPdt->tempat}} , {{ $dataPdt->tgl_lahir }}</p>
-                        <p class="leading-relaxed text-base">{{$dataPdt->alamat}}</p>
                         <p class="leading-relaxed text-base">{{$dataPdt->email}}</p>
 
                         <div class="text-center mt-2 leading-none flex justify-between w-full">

@@ -11,7 +11,7 @@ class warta extends Model
 
     protected $table = 'tb_warta';
 
-    public function author()
+    public function penulis()
     {
         return $this->belongsTo(User::class, 'author');
     }

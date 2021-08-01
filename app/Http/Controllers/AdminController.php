@@ -160,7 +160,6 @@ class AdminController extends Controller
 
         $gambar         = $r->file('gambar');
         $file           = $r->file('file');
-
         $gambar_         = $this->generate_picture($gambar);
         $file_           = $this->generate_picture($file);
 
@@ -170,9 +169,67 @@ class AdminController extends Controller
 
         $warta->gambar  = $gambar_;
         $warta->file    = $file_;
+        $this->uploadImage($file, $file_, 'file');
+
+
 
         // $this->uploadImage($gambar, $gambar_, 'gambar');
-        $this->uploadImage($file, $file_, 'file');
+
+
+        $warta->save();
+        return redirect('/admin/warta');
+    }
+
+    public function edit_warta($id)
+    {
+        $warta = warta::findOrFail($id);
+        return view('pages.admin.warta.edit')->with(['warta' => $warta]);
+    }
+
+    public function update_warta(Request $r)
+    {
+        $id = $r->request->get('id');
+        $warta = warta::findOrFail($id);
+
+        $warta->judul   = ucwords($r->request->get('judul'));
+
+        $warta->isi     = $r->request->get('isi');
+        $warta->author  = auth()->id();
+
+        $judul          = strtolower($r->request->get('judul')) . "-" . date('Ymd');
+
+        $warta->slug    = str_replace(" ", "-", $judul);
+
+        $gambar         = $r->file('gambar');
+        $file           = $r->file('file');
+        // dd($file);
+        if ($gambar !== null) {
+            $file_path_gambar      = public_path() . '/warta/img/' . $warta->gambar;
+
+            // dd($file_path_gambar);
+            if (file_exists($file_path_gambar)) {
+
+                unlink($file_path_gambar);
+            }
+            $gambar_         = $this->generate_picture($gambar);
+
+
+            $image_resize    = Image::make($gambar->getRealPath());
+            $image_resize->resize(300, 300);
+            $image_resize->save(public_path('warta/img/' . $gambar_));
+
+            $warta->gambar  = $gambar_;
+        }
+        if ($file !== null) {
+            $file_path_pdf         = public_path() . '/warta/pdf/' . $warta->file;
+            if (file_exists($file_path_pdf)) {
+
+                unlink($file_path_pdf);
+            }
+            $file_           = $this->generate_picture($file);
+            $warta->file    = $file_;
+            $this->uploadImage($file, $file_, 'file');
+        }
 
         $warta->save();
         $table = warta::all();
@@ -196,17 +253,24 @@ class AdminController extends Controller
     {
 
         $warta                 = warta::find($id);
-        $file_path_gambar      = public_path() . '/warta/img/' . $warta->gambar;
-        $file_path_pdf         = public_path() . '/warta/pdf/' . $warta->file;
+        if ($warta->gambar !== null) {
+            $file_path_gambar      = public_path() . '/warta/img/' . $warta->gambar;
+            if (file_exists($file_path_gambar)) {
+
+                unlink($file_path_gambar);
+            }
+        }
+        if ($warta->file !== null) {
+            $file_path_pdf         = public_path() . '/warta/pdf/' . $warta->file;
+            if (file_exists($file_path_pdf)) {
+
+                unlink($file_path_pdf);
+            }
+        }
+
         // dd($file_path_gambar);
-        if (file_exists($file_path_gambar)) {
 
-            unlink($file_path_gambar);
-        }
-        if (file_exists($file_path_pdf)) {
 
-            unlink($file_path_pdf);
-        }
 
         warta::destroy($id);
 
@@ -232,13 +296,15 @@ class AdminController extends Controller
         $gambar_                = $this->generate_picture($gambar);
 
         $image_resize           = Image::make($gambar->getRealPath());
-        $image_resize->resize(300, 300);
+        $image_resize->resize(null, 300, function ($constraint) {
+            $constraint->aspectRatio();
+        });
         $image_resize->save(public_path('gallery/' . $gambar_));
 
         $gallery->gambar        = $gambar_;
 
         $gallery->save();
         $table = Gallery::all();
-        return view('pages.admin.gallery.index')->with(['gallery' => $table]);
+        return redirect('/admin/gallery');
     }
 }

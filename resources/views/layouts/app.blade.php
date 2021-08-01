@@ -12,13 +12,14 @@
     @stack('before-style')
 
     @include('includes.style')
-
+    @yield('css')
     @stack('after-style')
 </head>
 
 <body>
     @include('includes.header')
-    @yield('content')
+    <div style="min-height: 350px;" class="bg-gray-200">@yield('content')</div>
+
     @include('includes.footer')
 
     @stack('before-script')

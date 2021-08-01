@@ -45,24 +45,26 @@
 
 <div class="min-h-screen bg-gray-100 p-0 sm:p-12">
     <div style="margin-bottom: 5rem;" class="px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
-        <h1 class="text-2xl font-bold mb-8" style="text-align: center;">Form Tambah Data Warta</h1>
-        <form method="post" id="form" enctype="multipart/form-data" novalidate action="/admin/storeWarta">
+        <h1 class="text-2xl font-bold mb-8" style="text-align: center;">Form Edit Data Warta</h1>
+        <form method="post" id="form" enctype="multipart/form-data" novalidate action="/admin/editWarta">
             @csrf
+            <input type="hidden" name="id" value="{{$warta->id}}">
             <div class="relative z-0 w-full mb-5">
-                <input type="text" name="judul" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan Judul</label>
+                <input type="text" name="judul" placeholder=" " value="{{ $warta->judul }}" required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
+                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"></label>
             </div>
             <div class="relative z-0 w-full mb-5">
-                <textarea name="isi" placeholder=" " cols="30" rows="10" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"></textarea>
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan Isi</label>
+                <textarea name="isi" placeholder=" " cols="30" rows="10" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">{{ $warta->isi }}</textarea>
+                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"></label>
             </div>
             <div class="relative z-0 w-full mb-5">
-                <input type="file" required id="gambar" name="gambar" placeholder=" " data-allowed-file-extensions="jpg jpeg png" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan Gambar</label>
+                <input type="file" id="gambar" name="gambar" placeholder=" " data-allowed-file-extensions="jpg jpeg png" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
+                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"></label>
             </div>
             <div class="relative z-0 w-full mb-5">
-                <input type="file" required name="file" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
-                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500">Masukkan File Warta</label>
+                <input type="file" name="file" placeholder=" " required class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" />
+                <label for="name" class="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"></label>
+                <span style="font-style: italic;">{{$warta->file}}</span>
             </div>
 
             <button id="button" type="submit" class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-green-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none">
@@ -150,7 +152,13 @@
 <script src="/dropify/js/dropify.js"></script>
 <script>
     $(document).ready(function() {
-        $('#gambar').dropify();
+        var gambar = $('#gambar').dropify();
+        gambar = gambar.data('dropify');
+        gambar.resetPreview();
+        gambar.clearElement();
+        gambar.settings.defaultFile = '/warta/img/{{ $warta->gambar }}';
+        gambar.destroy();
+        gambar.init();
     });
 </script>
 @endpush

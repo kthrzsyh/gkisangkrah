@@ -40,7 +40,7 @@
                                 {{$dataWarta->created_at}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                <a style="align-self: center; margin-right:1rem" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="#" data-id=''>
+                                <a style="align-self: center; margin-right:1rem" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="/admin/warta/edit/{{$dataWarta->id}}" data-id=''>
                                     Edit
                                 </a>
                                 <a style="align-self: center;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" href="/admin/hapusWarta/{{ $dataWarta->id }}" data-id="">Hapus</a>
