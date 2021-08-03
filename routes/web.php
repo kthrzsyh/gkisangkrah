@@ -53,6 +53,9 @@ Route::prefix('/admin')->middleware([AuthAdmin::class])->group(function () {
     Route::get('/warta/edit/{id}', [AdminController::class, 'edit_warta']);
     Route::post('/editWarta', [AdminController::class, 'update_warta']);
     Route::get('/gallery', [AdminController::class, 'gallery']);
+    Route::post('/gallery/delete/{id}', [AdminController::class, 'delete_gallery']);
+    Route::get('/gallery/edit/{id}', [AdminController::class, 'edit_gallery']);
+    Route::post('/editGallery', [AdminController::class, 'update_gallery']);
     Route::get('/addGallery', [AdminController::class, 'addGallery']);
     Route::post('/storeGallery', [AdminController::class, 'add_gallery']);
 });

@@ -44,10 +44,10 @@
                                 {{$dataGallery->created_at}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                <a style="align-self: center; margin-right:1rem" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="" data-id=''>
+                                <a style="align-self: center; margin-right:1rem" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="/admin/gallery/edit/{{$dataGallery->id}}" data-id=''>
                                     Edit
                                 </a>
-                                <a id="hapus_pdt" style="align-self: center;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hapus" href="#!" data-id="">Hapus</a>
+                                <a id="hapus_gallery" style="align-self: center;" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded hapus" href="#!" data-id="{{$dataGallery->id}}">Hapus</a>
 
                             </td>
                         </tr>
@@ -116,7 +116,7 @@
     $(document).ready(function() {
         $('#table-gallery').DataTable();
     });
-    $(document).on('click', 'a#hapus_pdt', function() {
+    $(document).on('click', 'a#hapus_gallery', function() {
         // console.log($(this).data('id'));
         let data = {
             '_token': '{{csrf_token()}}',
@@ -130,7 +130,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    $.post('/admin/pdt/delete/' + $(this).data('id'), data,
+                    $.post('/admin/gallery/delete/' + $(this).data('id'), data,
                         function(respon) {
                             window.location.reload()
                         })

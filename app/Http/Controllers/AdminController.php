@@ -307,4 +307,53 @@ class AdminController extends Controller
         $table = Gallery::all();
         return redirect('/admin/gallery');
     }
+    public function delete_gallery($id)
+    {
+        $gallery                 = Gallery::find($id);
+        if ($gallery->gambar !== null) {
+            $file_path_gambar      = public_path() . '/gallery/' . $gallery->gambar;
+            if (file_exists($file_path_gambar)) {
+
+                unlink($file_path_gambar);
+            }
+        }
+        $delete_gallery     = Gallery::destroy($id);
+        return  $delete_gallery;
+    }
+    public function edit_gallery($id)
+    {
+        $gallery = Gallery::findOrFail($id);
+        return view('pages.admin.gallery.edit')->with(['gallery' => $gallery]);
+    }
+    public function update_gallery(Request $r)
+    {
+        $id = $r->request->get('id');
+        $gallery = Gallery::findOrFail($id);
+
+        $gallery->deskripsi     = $r->request->get('deskripsi');
+
+        $gambar         = $r->file('gambar');
+        // dd($file);
+        if ($gambar !== null) {
+            $file_path_gambar      = public_path() . '/gallery/' . $gallery->gambar;
+
+            // dd($file_path_gambar);
+            if (file_exists($file_path_gambar)) {
+
+                unlink($file_path_gambar);
+            }
+            $gambar_         = $this->generate_picture($gambar);
+
+
+            $image_resize    = Image::make($gambar->getRealPath());
+            $image_resize->resize(300, 300);
+            $image_resize->save(public_path('/gallery/' . $gambar_));
+
+            $gallery->gambar  = $gambar_;
+        }
+
+        $gallery->save();
+        $table = Gallery::all();
+        return view('pages.admin.gallery.index')->with(['gallery' => $table]);
+    }
 }
