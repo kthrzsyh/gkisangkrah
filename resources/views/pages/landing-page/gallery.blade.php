@@ -4,8 +4,8 @@
 @section('title', 'Gallery')
 
 @section('content')
-<div class="mt-16 max-w-6xl mx-auto px-5" style="padding-bottom: 3rem;">
-    <h3 class="text-gray-600 text-2xl font-medium">Gallery</h3>
+<div class="max-w-6xl mx-auto px-5" style="padding-bottom: 3rem;">
+    <h3 class="text-600 text-4xl font-medium">Gallery</h3>
 
     <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
         @foreach($gallery as $dataGallery)

@@ -26,19 +26,21 @@
                     </h1>
 
                     <div class="inline-block items-center mx-auto lg:mx-0 lg:flex justify-center lg:space-x-8 md:space-x-2 sm:space-x-3 space-x-0">
+                        <a href="/warta">
+                            <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #DC745F; font-family: 'Poppins', sans-serif;">
+                                Warta
+                            </button>
+                        </a>
 
-                        <button class="inline-flex font-semibold text-white text-base py-4 px-6 rounded-xl mb-4 lg:mb-0 md:mb-0 focus:outline-none box-shadow-header-2-3" style="background: #DC745F; font-family: 'Poppins', sans-serif;">
-                            Warta
-                        </button>
-
-                        <button class="btn-outline-header-2-3 font-normal text-black text-base py-4 px-6 rounded-xl focus:outline-none rounded hover:border" style="font-family: 'Poppins', sans-serif">
-                            <div class="flex items-center">
-                                <img style="height: 20px;" class="mr-2" src="{{ asset('/assets/img/icon-1.png') }}" alt="" />
-                                Gallery
-                            </div>
-                        </button>
+                        <a href="/album">
+                            <button class="btn-outline-header-2-3 font-normal text-black text-base py-4 px-6 rounded-xl focus:outline-none rounded hover:border" style="font-family: 'Poppins', sans-serif">
+                                <div class="flex items-center">
+                                    <img style="height: 20px;" class="mr-2" src="{{ asset('/assets/img/icon-1.png') }}" alt="" />
+                                    Gallery
+                                </div>
+                            </button>
+                        </a>
                     </div>
-
                 </div>
 
                 <!-- Right Column -->

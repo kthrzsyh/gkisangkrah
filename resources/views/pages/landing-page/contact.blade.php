@@ -9,15 +9,35 @@
         <!-- Left Column -->
         <div class="w-full lg:w-1/2 text-center justify-center flex lg:mb-0 mb-12">
             <div class="mapouter">
-                <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=GKI%20Sangkrah&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com"></a><br>
+                <div class="gmap_canvas" style="align-items: center; padding-left: 3.5rem;">
+                    <iframe width="500" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=GKI%20Sangkrah&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com"></a><br>
                     <style>
                         .mapouter {
+
+                            overflow: hidden;
+
+                            padding-bottom: 56.25%;
+
                             position: relative;
-                            text-align: right;
-                            height: 500px;
-                            width: 600px;
+
+                            height: 0;
+
                         }
-                    </style><a href="https://www.embedgooglemap.net">add google maps html</a>
+
+                        .mapouter iframe {
+
+                            left: 0;
+
+                            top: 0;
+
+                            height: 100%;
+
+                            width: 100%;
+
+                            position: absolute;
+
+                        }
+                    </style>
                     <style>
                         .gmap_canvas {
                             overflow: hidden;

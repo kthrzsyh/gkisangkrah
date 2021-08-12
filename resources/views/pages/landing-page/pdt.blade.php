@@ -10,19 +10,24 @@
             <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
                 <h1 class=" title-font mb-2 text-4xl font-extrabold leading-10 tracking-tight text-left sm:text-5xl sm:leading-none md:text-6xl">Daftar Pendeta</h1>
             </div>
-            <div class="flex flex-wrap m-4" style="margin:auto; padding-left: 4rem;">
+            <div class="flex flex-wrap">
                 @foreach($pdt as $dataPdt)
-                <div class="p-4" style="width: 20rem; height: 20rem;">
-                    <div class="border border-gray-300 p-6 rounded-lg" style="border-color: black;">
+                <div class="sm:p-4 px-0 py-4 lg:w-1/3 mx-auto card">
+                    <div class="h-full py-8 px-11 rounded-2xl bg-white card-outline flex flex-col relative overflow-hidden">
                         <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
                             <img src="{{ asset('/assets/img/person.png') }}" alt="">
                         </div>
-                        <h2 class="text-lg  font-medium title-font mb-2">{{$dataPdt->nama}}</h2>
+                        <h2 class="text-xl tracking-wide mb-3 font-medium price-title">{{$dataPdt->nama}}</h2>
                         <p class="leading-relaxed text-base">{{$dataPdt->tempat}} , {{ $dataPdt->tgl_lahir }}</p>
-                        <p class="leading-relaxed text-base">{{$dataPdt->email}}</p>
+                        <!-- <p class="leading-relaxed text-base" style="text-overflow: hidden;">{{$dataPdt->email}}</p> -->
 
                         <div class="text-center mt-2 leading-none flex justify-between w-full">
-                            <span class=" mr-3 inline-flex items-center leading-none text-sm  py-1 ">
+                            <span class=" inline-flex items-center leading-none text-sm">
+                                <div class="w-8 h-8 inline-flex items-center justify-center rounded-full bg-indigo-100 mb-4">
+                                    <a href="mailto: {{$dataPdt->email}}" target="_blank">
+                                        <img src="{{ asset('/assets/img/mail.png') }}">
+                                    </a>
+                                </div>
                             </span>
                             <span class=" inline-flex items-center leading-none text-sm">
                                 <div class="w-8 h-8 inline-flex items-center justify-center rounded-full bg-indigo-100 mb-4">
